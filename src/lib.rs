@@ -41,26 +41,40 @@
 //!
 
 /// Main Arduino Platform service
-pub mod commands {
-    tonic::include_proto!("cc.arduino.cli.commands");
+pub mod cc {
+    pub mod arduino {
+        pub mod cli {
+            pub mod commands {
+                pub mod v1 {
+                    tonic::include_proto!("cc.arduino.cli.commands.v1");
+                }
+            }
+        }
+    }
 }
 
-/// Service that abstract a debug Session usage
-pub mod debug {
-    tonic::include_proto!("cc.arduino.cli.debug");
+pub (crate) mod google {
+    pub (crate) mod rpc {
+        tonic::include_proto!("google.rpc");
+    }
 }
 
-/// Service that abstracts a Monitor usage
-pub mod monitor {
-    tonic::include_proto!("cc.arduino.cli.monitor");
-}
+// Service that abstract a debug Session usage
+// pub mod debug {
+//     tonic::include_proto!("cc.arduino.cli.debug.v1");
+// }
 
-/// The Settings service provides an interface to Arduino CLI's configuration options
-pub mod settings {
-    tonic::include_proto!("cc.arduino.cli.settings");
-}
+// Service that abstracts a Monitor usage
+// pub mod monitor {
+//     tonic::include_proto!("cc.arduino.cli.monitor.v1");
+// }
 
-pub use crate::commands::arduino_core_client::ArduinoCoreClient;
-pub use crate::debug::debug_client::DebugClient;
-pub use crate::monitor::monitor_client::MonitorClient;
-pub use crate::settings::settings_client::SettingsClient;
+// The Settings service provides an interface to Arduino CLI's configuration options
+// pub mod settings {
+//     tonic::include_proto!("cc.arduino.cli.settings.v1");
+// }
+
+pub use crate::cc::arduino::cli::commands::v1::arduino_core_service_client::ArduinoCoreServiceClient;
+// pub use crate::commands::debug_client::DebugClient;
+// pub use crate::monitor::monitor_client::MonitorClient;
+// pub use crate::settings::settings_client::SettingsClient;

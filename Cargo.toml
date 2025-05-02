@@ -2,10 +2,10 @@
 name = "arduino-cli-client"
 description = "gRPC client for arduino cli"
 version = "0.1.2"
-authors = ["marcelbuesing <buesing.marcel@googlemail.com>"]
-edition = "2018"
-homepage = "https://github.com/marcelbuesing/arduino-cli-client"
-repository = "https://github.com/marcelbuesing/arduino-cli-client.git"
+authors = ["marcelbuesing <buesing.marcel@googlemail.com>", "amarcolini"]
+edition = "2021"
+homepage = "https://github.com/amarcolini/arduino-cli-client"
+repository = "https://github.com/amarcolini/arduino-cli-client.git"
 keywords = ["arduino", "arduino-cli", "arduino-grpc"]
 # License terms inherited from `arduino/arduino-cli`
 license = "GPL-3.0"
@@ -13,13 +13,15 @@ license = "GPL-3.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tonic = "0.3"
-prost = "0.6"
-prost-types = "0.6"
+tonic = "0.13.0"
+prost = "0.13.5"
+prost-types = "0.13.5"
+
 
 [build-dependencies]
-tonic-build = "0.3"
+# tonic-buf-build = "0.3.0" TODO: come back when this is updated
+tonic-build = "0.13.0"
 
 [dev-dependencies]
-tokio = { version = "0.2", features = ["full"] }
+tokio = { version = "1.44.2", features = ["full"] }
 serde_json = "1.0"
